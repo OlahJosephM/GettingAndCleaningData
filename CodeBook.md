@@ -22,7 +22,9 @@ X_train.txt | UCI HAR Dataset/train | measures of given data point.
 
 
 ### Variables
+
 Name | Domain | Description
+---- | ------ | -----------
 subject | NA | Volunteer
 activity | NA | prediction of whether walking, sitting, standing, laying, or going up/down stairs.
 tBodyAcc-mean()-X | time | mean of body acceleration in direction of X
