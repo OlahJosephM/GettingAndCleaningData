@@ -7,9 +7,9 @@
 ### Read in data and create data frame
 
 The script reads in the data from the following files:
-> subject_*.txt
-> Y_*.txt
-> X_*.txt
+* subject_*.txt
+* Y_*.txt
+* X_*.txt
 
 Next it creates the dataframe by column binding the subject, activity (Y) measure (X).
 

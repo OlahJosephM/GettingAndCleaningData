@@ -40,10 +40,27 @@ run_analysis <- function() {
         
         df.extract[,2] <- subActivities
         
-        write.table(df.extract,file="TidyDataSet")
+        write.table(df.extract, file="TidyDataSet.txt")
                 
         
         ##5. Create a second, independent tidy data set with 
         ##        the average of each variable for each activity and each subject. 
+        df.means <- ddply(df.extract,.(subject, activities), summarize, colName=mean(df.extract[,3]))
+        colNameNew <- paste( c("Avg-", colnames(df.extract)[3]),collapse="")
+        colnames(df.means) <- c("subject", "activity", colNameNew)
         
+        ncols <- ncol(df.extract)
+        for (i in 4:ncols) {
+                result <- ddply(df.extract, .(subject, activities), summarize, mean=mean(df.extract[,i]))
+                                
+                colNames <- colnames(df.means)
+                colNameNew <- paste( c("Avg-", colnames(df.extract)[i]), collapse="")
+                columnLabels <- c(colNames, colNameNew)
+                #resultColumnLabels <- c("subject", "activity", colName)
+                #colnames(result) <- resultColumnLabels
+                
+                df.means <- cbind(df.means,result[,3])
+                colnames(df.means) <- columnLabels
+        }
+        write.table(df.means, file="AveragesDataSet.txt")
 }
