@@ -1,4 +1,7 @@
-## Describes the variables, data, and transformations or work performed to clean up the data.
+# "TidyDataSet"
+
+* Describes data source (Data Origin & Data Files)
+* Describes variables of data frame itself (Variables)
 
 ### Data Origin
 The data came from the following site:
@@ -94,9 +97,14 @@ fBodyBodyGyroMag-std() | frequency | standard deviation of magnitude of body-bod
 fBodyBodyGyroJerkMag-mean() | frequency | mean of magnitude of body-body jerk measured by gyro
 fBodyBodyGyroJerkMag-std() | frequency | standard deviation of magnitude of body-body jerk measured by gyro
 
-### Transformations
+### Transformations to Create Data Frame, TidyDataSet.
 
-For each subject-activity the average was found for each measure.  The names for these averages simply had "Avg-" prefixed to the name of each measure.
+From the X_*.txt files, only columns with either "-mean()" or "-std()" were extracted for the data frame.
+
+The activity column of data was created by transforming the activity codes of the Y_*.txt files to the activity labels as listed in the activities.txt file.
+
+The separate data & train data frame were combined using the rbind() function.
+
 
 
 
